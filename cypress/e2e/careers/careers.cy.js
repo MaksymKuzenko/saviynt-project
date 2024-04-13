@@ -13,12 +13,14 @@ describe("the suit covering the Careers functionality", () => {
   });
 
   it("should search a job from Job Description page", () => {
+    cy.intercept("*/px.ads.linkedin.com/*").as("filteredItems")
     cy.visit("/careers/job-descriptions/");
-    JobDescriptionsPage.jobsSearchInput.type("QA{enter}");
+    JobDescriptionsPage.jobsSearchInput.type("QA");
+    cy.wait("@filteredItems");
     JobDescriptionsPage.listOfVacancies
       .first()
       .invoke("removeAttr", "onclick")
-      .click({force: true});
+      .click();
 
     cy.origin("https://jobs.lever.co", () => {
       const JobDescriptionPage = Cypress.require(
