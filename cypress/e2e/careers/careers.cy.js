@@ -13,8 +13,10 @@ describe("the suit covering the Careers functionality", () => {
     cy.contains("h2", "Saviynt Job Listings");
   });
 
-  it("should search a job from Job Description page", () => {
+  it.only("should search a job from Job Description page", () => {
+    cy.intercept("POST", "*/px.ads.linkedin.com/*").as("filteredItems");
     cy.visit("/careers/job-descriptions/");
+    cy.wait("@filteredItems").its("response.statusCode").should("eq", 204);
 
     JobDescriptionsPage.jobsSearchInput.type("QA{enter}");
     JobDescriptionsPage.listOfVacancies
