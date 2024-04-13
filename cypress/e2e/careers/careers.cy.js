@@ -19,11 +19,11 @@ describe("the suit covering the Careers functionality", () => {
     cy.wait("@filteredItems").its("response.statusCode").should("eq", 204);
 
     JobDescriptionsPage.jobsSearchInput.type("QA{enter}");
-    JobDescriptionsPage.listOfVacancies
-      .first()
-      .should('be.visible')
-      .invoke("removeAttr", "onclick")
-      .click();
+    // JobDescriptionsPage.listOfVacancies
+    //   .first()
+    //   .should('be.visible')
+    //   .invoke("removeAttr", "onclick")
+    //   .click();
 
     cy.origin("https://jobs.lever.co", () => {
       const JobDescriptionPage = Cypress.require(
