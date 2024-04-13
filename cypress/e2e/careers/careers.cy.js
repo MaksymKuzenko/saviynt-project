@@ -24,7 +24,7 @@ describe("the suit covering the Careers functionality", () => {
       const JobDescriptionPage = Cypress.require(
         "../../fixtures/page_objects/job-description.page"
       );
-      cy.contains(/qa|sdet/i);
+      cy.contains(/qa|sdet/i).should('be.visible');;
       JobDescriptionPage.applyForAJobButton.each(($button) =>
         cy.wrap($button).should("be.visible")
       );
