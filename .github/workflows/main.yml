@@ -1,8 +1,6 @@
 name: E2E on Chrome
 on:
   workflow_dispatch:
-    inputs:
-      branch:
   pull_request:
     types: [opened, reopened, edited, synchronize]
 jobs:
