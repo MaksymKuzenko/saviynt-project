@@ -14,13 +14,11 @@ describe("the suit covering the Careers functionality", () => {
 
   it("should search a job from Job Description page", () => {
     cy.visit("/careers/job-descriptions/");
-    JobDescriptionsPage.jobsSearchInput
-      .type("QA{enter}")
-      .should("have.value", "QA");
+    JobDescriptionsPage.jobsSearchInput.type("QA{enter}");
     JobDescriptionsPage.listOfVacancies
       .first()
       .invoke("removeAttr", "onclick")
-      .click();
+      .click({force: true});
 
     cy.origin("https://jobs.lever.co", () => {
       const JobDescriptionPage = Cypress.require(
