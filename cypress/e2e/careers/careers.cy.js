@@ -2,7 +2,6 @@ import HomePage from "../../fixtures/page_objects/home.page";
 import CareersPage from "../../fixtures/page_objects/careers.page";
 import JobDescriptionsPage from "../../fixtures/page_objects/job-descriptions.page";
 
-
 describe("the suit covering the Careers functionality", () => {
   it("should navigate to Careers page and Job Description page", () => {
     cy.visit("/");
@@ -14,8 +13,10 @@ describe("the suit covering the Careers functionality", () => {
   });
 
   it("should search a job from Job Description page", () => {
-    cy.visit("/careers/job-descriptions/"); 
-    JobDescriptionsPage.jobsSearchInput.type("QA{enter}");
+    cy.visit("/careers/job-descriptions/");
+    JobDescriptionsPage.jobsSearchInput
+      .type("QA{enter}")
+      .should("have.value", "QA");
     JobDescriptionsPage.listOfVacancies
       .first()
       .invoke("removeAttr", "onclick")
