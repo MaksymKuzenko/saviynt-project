@@ -30,3 +30,4 @@ jobs:
         with:
           name: cypress-screenshots
           path: cypress/screenshots
+
