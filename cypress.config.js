@@ -6,6 +6,8 @@ module.exports = defineConfig({
     viewportHeight: 1080,
     baseUrl: 'https://saviynt.com/',
 
+    experimentalOriginDependencies: true,
+
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },

@@ -8,12 +8,9 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
+import { registerCommand } from "cypress-wait-for-stable-dom";
+registerCommand();
 
-import { registerCommand } from 'cypress-wait-for-stable-dom'
-registerCommand()
-
-import 'cypress-network-idle'
-
-Cypress.on('uncaught:exception', (err, runnable) => {
-    return false
-  })
+Cypress.on("uncaught:exception", (err, runnable) => {
+  return false;
+});
