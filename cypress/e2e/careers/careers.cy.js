@@ -14,8 +14,7 @@ describe("the suit covering the Careers functionality", () => {
   });
 
   it("should search a job from Job Description page", () => {
-    cy.visit("/careers/job-descriptions/");
-    
+    cy.visit("/careers/job-descriptions/"); 
     JobDescriptionsPage.jobsSearchInput.type("QA{enter}");
     JobDescriptionsPage.listOfVacancies
       .first()
