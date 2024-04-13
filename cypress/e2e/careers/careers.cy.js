@@ -21,6 +21,7 @@ describe("the suit covering the Careers functionality", () => {
     JobDescriptionsPage.jobsSearchInput.type("QA{enter}");
     JobDescriptionsPage.listOfVacancies
       .first()
+      .should('be.visible')
       .invoke("removeAttr", "onclick")
       .click();
 
