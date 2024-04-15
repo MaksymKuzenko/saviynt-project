@@ -13,10 +13,10 @@ describe("the suit covering the Careers functionality", () => {
   });
 
   it("should search a job from Job Description page", () => {
-    cy.intercept("*/px.ads.linkedin.com/*").as("filteredItems")
+    //cy.intercept("*/px.ads.linkedin.com/*").as("filteredItems")
     cy.visit("/careers/job-descriptions/");
     JobDescriptionsPage.jobsSearchInput.type("QA");
-    cy.wait("@filteredItems");
+    cy.waitForStableDOM({ pollInterval: 1000, timeout: 20000 });
     JobDescriptionsPage.listOfVacancies
       .first()
       .invoke("removeAttr", "onclick")
