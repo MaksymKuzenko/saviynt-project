@@ -1,6 +1,6 @@
 import HomePage from "../../fixtures/page_objects/home.page";
 import CareersPage from "../../fixtures/page_objects/careers.page";
-import JobDescriptionsPage from "../../fixtures/page_objects/job-descriptions.page";
+import JobDescriptionsItemPage from "../../fixtures/page_objects/job-descriptions-item.page";
 
 describe("the suit covering the Careers functionality", () => {
   it("should navigate to Careers page and Job Description page", () => {
@@ -23,11 +23,11 @@ describe("the suit covering the Careers functionality", () => {
       .click();
 
     cy.origin("https://jobs.lever.co", () => {
-      const JobDescriptionPage = Cypress.require(
+      const JobDescriptionsItemPage = Cypress.require(
         "../../fixtures/page_objects/job-description.page"
       );
-      cy.contains(/qa|sdet/i).should('be.visible');;
-      JobDescriptionPage.applyForAJobButton.each(($button) =>
+      cy.contains(/qa|sdet/i).should('be.visible');
+      JobDescriptionsItemPage.applyForAJobButton.each(($button) =>
         cy.wrap($button).should("be.visible")
       );
     });
