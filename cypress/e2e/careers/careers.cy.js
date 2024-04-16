@@ -19,8 +19,8 @@ describe("the suit covering the Careers functionality", () => {
 
     //cy.waitForStableDOM({ pollInterval: 1000, timeout: 20000 });
     JobDescriptionsPage.listOfVacancies
-      .should("be.visible")
       .first()
+      .should("be.visible")
       .invoke("removeAttr", "onclick")
       .click();
 

@@ -4,7 +4,8 @@ class JobDescriptionsPage {
   }
 
   get listOfVacancies() {
-    return cy.get(".list .lever-job-title");
+    return cy.get(".list .lever-job-title")
+    .should("be.visible");
   }
 }
 
