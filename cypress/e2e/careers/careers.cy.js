@@ -15,14 +15,12 @@ describe("the suit covering the Careers functionality", () => {
   it("should search a job from Job Description page", () => {
     //cy.intercept("*/px.ads.linkedin.com/*").as("filteredItems")
     cy.visit("/careers/job-descriptions/");
-    JobDescriptionsPage.jobsSearchInput.type("QA").then(() => {
-        
-    })
+    JobDescriptionsPage.jobsSearchInput.type("QA").then(() => {});
 
-   //cy.waitForStableDOM({ pollInterval: 1000, timeout: 20000 });
+    //cy.waitForStableDOM({ pollInterval: 1000, timeout: 20000 });
     JobDescriptionsPage.listOfVacancies
+      .should("be.visible")
       .first()
-      .should('be.visible')
       .invoke("removeAttr", "onclick")
       .click();
 
@@ -30,7 +28,7 @@ describe("the suit covering the Careers functionality", () => {
       const JobDescriptionItemPage = Cypress.require(
         "../../fixtures/page_objects/job-description-item.page"
       );
-      cy.contains(/qa|sdet/i).should('be.visible');
+      cy.contains(/qa|sdet/i).should("be.visible");
       JobDescriptionItemPage.applyForAJobButton.each(($button) =>
         cy.wrap($button).should("be.visible")
       );
