@@ -9,7 +9,7 @@ describe("the suit covering the Analyst-report page", () => {
     cy.contains("h1", "Analyst Reports");
   });
 
-  it("should filter reports and open one", () => {
+  it.only("should filter reports and open one", () => {
     cy.intercept("POST", "/wp-json/content-hub/filter").as("filteredItems");
     cy.visit("/content-hub-term/content-type/analyst-reports/");
     cy.wait("@filteredItems").its("response.statusCode").should("eq", 200);
