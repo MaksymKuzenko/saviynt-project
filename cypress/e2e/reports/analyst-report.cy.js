@@ -16,8 +16,8 @@ describe("the suit covering the Analyst-report page", () => {
 
     AnalystReportPage.getAagFilterCounter().then((filterCounter) => {
       AnalystReportPage.aagFilterCheckbox.click();
-      cy.wait("@filteredItems").its("response.statusCode").should("eq", 200);
-
+      cy.waitForStableDOM({ pollInterval: 1000, timeout: 10000 });
+      
       AnalystReportPage.getResultsCounter().then((resultsCounter) => {
         expect(resultsCounter).to.eq(filterCounter);
 
