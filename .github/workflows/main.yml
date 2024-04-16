@@ -11,7 +11,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.1.1
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: npm install
+
       - name: Cypress run
         uses: cypress-io/github-action@v6.6.1
         with:
           browser: chrome
+
+      - name: Upload Cypress Artifacts on Failure
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
