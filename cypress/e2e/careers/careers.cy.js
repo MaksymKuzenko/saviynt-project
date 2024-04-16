@@ -15,7 +15,8 @@ describe("the suit covering the Careers functionality", () => {
   it("should search a job from Job Description page", () => {
     //cy.intercept("*/px.ads.linkedin.com/*").as("filteredItems")
     cy.visit("/careers/job-descriptions/");
-    JobDescriptionsPage.jobsSearchInput.type("QA").then(() => {});
+    JobDescriptionsPage.jobsSearchInput
+      .type("QA{enter}", { timeout: 10000 })
 
     //cy.waitForStableDOM({ pollInterval: 1000, timeout: 20000 });
     JobDescriptionsPage.listOfVacancies
