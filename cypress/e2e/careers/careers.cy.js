@@ -15,10 +15,8 @@ describe("the suit covering the Careers functionality", () => {
   it("should search a job from Job Description page", () => {
     cy.visit("/careers/job-descriptions/");
     cy.waitForStableDOM({ pollInterval: 1000, timeout: 10000 });
-    JobDescriptionsPage.jobsSearchInput
-      .type("QA{enter}", { timeout: 10000 })
+    JobDescriptionsPage.jobsSearchInput.type("QA{enter}");
 
-    
     JobDescriptionsPage.listOfVacancies
       .first()
       .should("be.visible")
@@ -29,10 +27,18 @@ describe("the suit covering the Careers functionality", () => {
       const JobDescriptionItemPage = Cypress.require(
         "../../fixtures/page_objects/job-description-item.page"
       );
+      const ApplicationPage = Cypress.require(
+        "../../fixtures/page_objects/application.page"
+      );
+      generateUserData = Cypress.require("../../helpers/faker-data");
+      let userData = generateUserData();
       cy.contains(/qa|sdet/i).should("be.visible");
       JobDescriptionItemPage.applyForAJobButton.each(($button) =>
         cy.wrap($button).should("be.visible")
       );
+
+      JobDescriptionItemPage.applyForAJobButton.first().click();
+      ApplicationPage.applyForPosition(userData);
     });
   });
 });
