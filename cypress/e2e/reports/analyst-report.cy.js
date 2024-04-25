@@ -1,7 +1,7 @@
 import HomePage from "../../fixtures/page_objects/home.page";
 import AnalystReportPage from "../../fixtures/page_objects/analyst-reports.page";
 
-describe("the suit covering the Analyst-report page", () => {
+describe("analyst-report", () => {
   it("should navigate to Analyst-reports page", () => {
     cy.visit("/");
     HomePage.AnalystReportsButton.click();

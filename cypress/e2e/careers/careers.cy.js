@@ -2,7 +2,7 @@ import HomePage from "../../fixtures/page_objects/home.page";
 import CareersPage from "../../fixtures/page_objects/careers.page";
 import JobDescriptionsPage from "../../fixtures/page_objects/job-descriptions.page";
 
-describe("the suit covering the Careers functionality", () => {
+describe("careers functionality", () => {
   it("should navigate to Careers page and Job Description page", () => {
     cy.visit("/");
     HomePage.careersButton.click();
